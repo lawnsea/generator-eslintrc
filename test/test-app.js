@@ -5,13 +5,13 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('eslintrc:app', function () {
-  before(function (done) {
+suite('eslintrc:app', function () {
+  suiteSetup(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
       .on('end', done);
   });
 
-  it('creates files', function () {
+  test('creates .eslintrc', function () {
     assert.file([
       '.eslintrc'
     ]);
