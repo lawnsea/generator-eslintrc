@@ -17,6 +17,12 @@ module.exports = yeoman.generators.Base.extend({
       type: 'String',
       defaults: './'
     });
+
+    this.option('source', {
+      desc: 'source template for .eslintrc',
+      type: 'String',
+      defaults: this.templatePath('eslintrc')
+    });
   },
 
   initializing: function () {
@@ -28,7 +34,7 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.fs.copy(
-        this.templatePath('eslintrc'),
+        path.resolve(this.options.source),
         this.destinationPath(this.options.destination, '.eslintrc')
       );
     }
